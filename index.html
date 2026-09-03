@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan Operasional WM Center | Portal SOP, Product Knowledge & Daily Tasks</title>
+  <meta name="description" content="Portal Pusat Instruksi Kerja Standar (SOP), Product Knowledge, Link Spreadsheet Daily Tasks, dan Akses Sistem WM Center." />
+  <link rel="icon" id="faviconImg" href="assets/logo.jpg" />
+  <link rel="stylesheet" href="styles.css?v=v6" />
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="brand">
+          <img id="brandLogoImg" src="assets/logo.jpg" alt="WM Center Logo" class="brand-logo" />
+          <div class="brand-info">
+            <span id="brandTitleText" class="brand-title">WM CENTER</span>
+            <span id="brandSubtitleText" class="brand-subtitle">CLINIC & PHYSIO OPS PORTAL</span>
+          </div>
+        </a>
+
+        <div class="nav-controls">
+          <!-- Branch Selector Dropdown -->
+          <div class="branch-select-wrapper">
+            <span class="select-icon">📍</span>
+            <select id="branchSelect" class="branch-select">
+              <!-- Options loaded dynamically -->
+            </select>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="main-content">
+
+      <!-- Hero Header Section -->
+      <section class="hero-card">
+        <img id="heroBgImg" src="assets/banner.jpg" alt="WM Center Operations Background" class="hero-bg" />
+        <div class="hero-content">
+          <div class="badge-status">
+            <span class="status-dot"></span>
+            <span id="statusBadgeText">Jam Operasional: Minggu – Senin (08.00 – 17.00) • Selasa – Sabtu (08.00 – 21.00)</span>
+          </div>
+          <h1 id="heroTitleText" class="hero-title">Pusat Panduan SOP, Product Knowledge & Daily Tasks WM Center</h1>
+          <p id="heroDescText" class="hero-desc">Akses cepat seluruh instruksi kerja (SOP), materi product knowledge, rekap spreadsheet daily income, serta jadwal shift per cabang WM Center.</p>
+          
+          <!-- Instant SOP & Spreadsheet Search Bar -->
+          <div class="search-bar-hero">
+            <input type="text" id="searchInput" class="search-input" placeholder="Cari SOP, Product Knowledge, Jadwal, atau Link Spreadsheet..." />
+            <button class="btn-search" onclick="document.getElementById('contentSection').scrollIntoView({behavior: 'smooth'})">
+              <span>🔍</span> Cari Portal
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured / Latest Info Section -->
+      <section class="latest-info-section" id="latestInfoSection">
+        <div class="latest-info-header">
+          <div class="latest-info-title-box">
+            <span class="badge-latest-info">🔥 INFO TERBARU &amp; HIGHLIGHT</span>
+            <span class="latest-info-subtitle">Akses cepat instruksi kerja (SOP), IOC &amp; promo terbaru WM Center</span>
+          </div>
+        </div>
+        <div class="latest-info-grid" id="latestInfoGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- Primary Navigation Module Tabs -->
+      <nav class="module-tabs" id="moduleTabsContainer">
+        <!-- Rendered dynamically -->
+      </nav>
+
+      <!-- Announcement Banner -->
+      <section class="announcement-card" style="margin-bottom: 2rem;">
+        <div class="announcement-left">
+          <div class="announcement-icon">📢</div>
+          <div class="announcement-text">
+            <h4 id="announcementTitleText">Update SOP & Daily Task Drive WM Center (Per 18 Agustus 2026)</h4>
+            <p id="announcementDescText">Seluruh SOP, Product Knowledge, dan Rekap Spreadsheet Daily Income Cabang telah terhubung langsung dengan Google Drive internal WM Center.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Module Content Display Section -->
+      <section id="contentSection" class="sop-section">
+        
+        <!-- Dynamic Grid Content Cards -->
+        <div class="content-grid" id="contentGrid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modal Drawer Detail SOP -->
+    <div class="modal-overlay" id="sopModalOverlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modalTitle" style="font-size: 1.15rem; color: #0F172A;">Detail SOP WM Center</h3>
+          <button class="modal-close" id="modalClose">✕</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><strong id="footerBrandText">WM Center Operational Portal</strong> &copy; 2026 WM Center. Hak Cipta Dilindungi Undang-Undang.</p>
+      <p style="margin-top: 0.25rem; font-size: 0.775rem; color: #94A3B8;">Dokumen Internal Rahasia - Hanya untuk Penggunaan Staf Resmi.</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js?v=v14"></script>
+</body>
+</html>

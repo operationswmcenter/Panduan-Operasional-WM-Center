@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Editor | WM Center Dashboard Manager</title>
+  <link rel="icon" id="faviconImg" href="assets/logo.jpg" />
+  <link rel="stylesheet" href="styles.css?v=v6" />
+</head>
+<body>
+
+  <!-- Google Sites Style Top Studio Editor Bar -->
+  <div class="editor-top-bar">
+    <div class="editor-title-badge">
+      <span>🛠️ STUDIO EDITOR WM CENTER</span>
+      <span class="draft-pill">Mode Editing (Draft Active)</span>
+    </div>
+    <div class="editor-actions">
+      <a href="index.html" target="_blank" class="btn-editor-action btn-preview" title="Buka Tampilan Pratinjau Staf">
+        👁️ Lihat Pratinjau Staf
+      </a>
+      <button id="btnOpenSettings" class="btn-editor-action btn-preview" title="Pengaturan Foto, Brand, & Lokasi Cabang">
+        ⚙️ Pengaturan Foto & Brand
+      </button>
+      <button id="btnPublish" class="btn-editor-action btn-publish" title="Publikasikan semua perubahan ke Tampilan Staf (index.html)">
+        🚀 PUBLIKASIKAN KE STAF
+      </button>
+    </div>
+  </div>
+
+  <div class="app-container">
+    
+    <!-- Top Navigation Bar (With Admin Edit Pencil) -->
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="#" class="brand">
+          <img id="brandLogoImg" src="assets/logo.jpg" alt="WM Center Logo" class="brand-logo" />
+          <div class="brand-info">
+            <span id="brandTitleText" class="brand-title">WM CENTER</span>
+            <span id="brandSubtitleText" class="brand-subtitle">CLINIC & PHYSIO OPS PORTAL</span>
+          </div>
+        </a>
+
+        <div class="nav-controls">
+          <!-- Branch Selector Dropdown -->
+          <div class="branch-select-wrapper">
+            <span class="select-icon">📍</span>
+            <select id="branchSelect" class="branch-select">
+              <!-- Options loaded dynamically -->
+            </select>
+          </div>
+
+          <button id="btnEditNavbar" class="btn-admin-edit" style="background:#FEF3C7; color:#B45309;">
+            ✏️ Edit Header
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="main-content">
+
+      <!-- Hero Header Section -->
+      <section class="hero-card">
+        <button id="btnEditHero" class="btn-inline-edit" title="Edit Hero Header & Background Photo" style="top: 15px; right: 15px; width: 36px; height: 36px; font-size: 1rem;">✏️</button>
+        <img id="heroBgImg" src="assets/banner.jpg" alt="WM Center Operations Background" class="hero-bg" />
+        <div class="hero-content">
+          <div class="badge-status">
+            <span class="status-dot"></span>
+            <span id="statusBadgeText">Jam Operasional: Minggu – Senin (08.00 – 17.00) • Selasa – Sabtu (08.00 – 21.00)</span>
+          </div>
+          <h1 id="heroTitleText" class="hero-title">Pusat Panduan SOP, Product Knowledge & Daily Tasks WM Center</h1>
+          <p id="heroDescText" class="hero-desc">Akses cepat seluruh instruksi kerja (SOP), materi product knowledge, rekap spreadsheet daily income, serta jadwal shift per cabang WM Center.</p>
+          
+          <!-- Instant SOP & Spreadsheet Search Bar -->
+          <div class="search-bar-hero">
+            <input type="text" id="searchInput" class="search-input" placeholder="Cari SOP, Product Knowledge, Jadwal, atau Link Spreadsheet..." />
+            <button class="btn-search" onclick="document.getElementById('contentSection').scrollIntoView({behavior: 'smooth'})">
+              <span>🔍</span> Cari Portal
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured / Latest Info Section -->
+      <section class="latest-info-section" id="latestInfoSection">
+        <div class="latest-info-header">
+          <div class="latest-info-title-box">
+            <span class="badge-latest-info">🔥 INFO TERBARU &amp; HIGHLIGHT</span>
+            <span class="latest-info-subtitle">Item yang dipin akan muncul di sini (misal: SOP/IOC/Promo terbaru)</span>
+          </div>
+        </div>
+        <div class="latest-info-grid" id="latestInfoGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- Primary Navigation Module Tabs -->
+      <nav class="module-tabs" id="moduleTabsContainer">
+        <!-- Rendered dynamically -->
+      </nav>
+
+      <!-- Main Module Content Display Section -->
+      <section id="contentSection" class="sop-section">
+        
+        <!-- Admin Controls Bar -->
+        <div class="admin-bar-controls">
+          <button id="btnAddItem" class="btn-add-sop">➕ Tambah Item / Link Drive Baru</button>
+          <button id="btnResetData" class="btn-reset-sops">🔄 Reset Data Ke Standar Awal</button>
+        </div>
+
+        <!-- Dynamic Grid Content Cards -->
+        <div class="content-grid" id="contentGrid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modal Drawer Detail SOP -->
+    <div class="modal-overlay" id="sopModalOverlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modalTitle" style="font-size: 1.15rem; color: #0F172A;">Detail SOP WM Center</h3>
+          <button class="modal-close" id="modalClose">✕</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Modal Form: Edit Module Tab Title -->
+    <div class="modal-overlay" id="moduleTabModalOverlay">
+      <div class="modal-box" style="max-width: 500px;">
+        <div class="modal-header">
+          <h3 style="font-size: 1.15rem; color: #0F172A;">✏️ Edit Nama Tab Modul Navigasi</h3>
+          <button class="modal-close" id="moduleTabModalClose">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="moduleTabForm" novalidate>
+            <input type="hidden" id="formModuleTabNum" value="" />
+            <div class="form-group">
+              <label class="form-label" for="formModuleTabTitle">Nama / Judul Tab Modul</label>
+              <input type="text" id="formModuleTabTitle" class="form-input" placeholder="Misal: SOP & Product Knowledge" required />
+            </div>
+            <div class="modal-footer-actions">
+              <button type="button" id="btnCancelModuleTab" class="btn-reset-sops">Batal</button>
+              <button type="button" id="btnSaveModuleTab" class="btn-add-sop">💾 Simpan Nama Tab</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Modal Form: Tambah / Edit Card Item -->
+    <div class="modal-overlay" id="itemFormModalOverlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="formModalTitle" style="font-size: 1.15rem; color: #0F172A;">Tambah Item / Link Drive Baru</h3>
+          <button class="modal-close" id="formModalClose">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="itemForm" novalidate>
+            <input type="hidden" id="formItemId" value="" />
+            <div class="form-group" style="background: #FEF3C7; border: 1.5px solid #FCD34D; padding: 0.85rem; border-radius: 10px; margin-bottom: 1.25rem;">
+              <label style="display: flex; align-items: center; gap: 0.6rem; font-weight: 700; color: #92400E; cursor: pointer; margin: 0; font-size: 0.925rem;">
+                <input type="checkbox" id="formItemIsFeatured" style="width: 18px; height: 18px; accent-color: #D97706; cursor: pointer;" />
+                <span>🔥 Tampilkan di Section "Info Terbaru" (Pinned Highlight)</span>
+              </label>
+              <p style="font-size: 0.775rem; color: #B45309; margin-top: 0.35rem; margin-bottom: 0; padding-left: 1.7rem;">
+                Jika dicentang, item ini akan dipin dan muncul di bagian "Info Terbaru" (di bawah foto sampul). Item tetap tersimpan di modul utamanya.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <label class="form-label" style="margin-bottom:0;">Tampil di Modul Mana Saja (Bisa Pilih Lebih Dari 1):</label>
+                <button type="button" id="btnToggleAllModules" style="background: none; border: none; color: #0D9488; font-size: 0.775rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
+                  Pilih Semua Modul
+                </button>
+              </div>
+              <div id="formItemModulesContainer" class="form-categories-checkbox-grid">
+                <!-- Populated dynamically with module checkboxes -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <label class="form-label" style="margin-bottom:0;">Peran / Kategori Staf (Bisa Pilih Lebih Dari 1):</label>
+                <button type="button" id="btnToggleAllCategories" style="background: none; border: none; color: #0D9488; font-size: 0.775rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
+                  Pilih Semua Kategori
+                </button>
+              </div>
+              <div id="formItemCategoriesContainer" class="form-categories-checkbox-grid">
+                <!-- Populated dynamically with checkboxes -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="formItemCode">Kode / Tag Label</label>
+              <input type="text" id="formItemCode" class="form-input" placeholder="Misal: SOP-PHY-03 atau DRIVE-SHEET" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="formItemTitle">Judul Item / Nama Panduan</label>
+              <input type="text" id="formItemTitle" class="form-input" placeholder="Misal: Spreadsheet Daily Income Cabang PIK / Product Knowledge Terapi Dry Needling" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="formItemDriveUrl">Link URL Google Spreadsheet / Google Drive (Opsional)</label>
+              <input type="text" id="formItemDriveUrl" class="form-input" placeholder="https://docs.google.com/spreadsheets/d/... (Bisa dikosongkan)" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="formItemSummary">Ringkasan / Penjelasan Singkat</label>
+              <textarea id="formItemSummary" class="form-textarea" placeholder="Penjelasan singkat mengenai dokumen/spreadsheet ini..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="formItemDetails">Detail Langkah-Langkah / Catatan Tambahan (Bisa HTML)</label>
+              <textarea id="formItemDetails" class="form-textarea" style="min-height: 140px;" placeholder="Catatan penting..."></textarea>
+            </div>
+
+            <div class="modal-footer-actions">
+              <button type="button" id="btnCancelForm" class="btn-reset-sops">Batal</button>
+              <button type="button" id="btnSaveItemForm" class="btn-add-sop">💾 Simpan Item</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Modal Settings: Pengaturan Foto & Lokasi -->
+    <div class="modal-overlay" id="adminSettingsModalOverlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 style="font-size: 1.15rem; color: #0F172A;">⚙️ Pengaturan Portal, Foto & Lokasi</h3>
+          <button class="modal-close" id="settingsModalClose">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="settingsForm" novalidate>
+            
+            <div class="form-group">
+              <label class="form-label" for="settingsBrandTitle">Nama Brand Utama</label>
+              <input type="text" id="settingsBrandTitle" class="form-input" placeholder="WM CENTER" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsBrandSubtitle">Tagline / Subtitle Brand</label>
+              <input type="text" id="settingsBrandSubtitle" class="form-input" placeholder="CLINIC & PHYSIO OPS PORTAL" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsBranches">Daftar Lokasi Cabang (Pisahkan dengan koma)</label>
+              <input type="text" id="settingsBranches" class="form-input" placeholder="WM Center - Jakarta Utama, WM Center - Jakarta Selatan, WM Center - Jakarta Barat" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsBannerUrl">Link URL / Path Foto Banner Header</label>
+              <input type="text" id="settingsBannerUrl" class="form-input" placeholder="assets/banner.jpg atau URL gambar (https://...)" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsLogoUrl">Link URL / Path Foto Logo Brand</label>
+              <input type="text" id="settingsLogoUrl" class="form-input" placeholder="assets/logo.jpg atau URL gambar (https://...)" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsHeroTitle">Judul Utama Hero Header</label>
+              <input type="text" id="settingsHeroTitle" class="form-input" placeholder="Pusat Panduan SOP, Product Knowledge & Daily Tasks WM Center" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsHeroDesc">Deskripsi Ringkas Hero Header</label>
+              <textarea id="settingsHeroDesc" class="form-textarea" placeholder="Akses cepat seluruh instruksi kerja (SOP)..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsStatusBadge">Jam Operasional / Status Badge</label>
+              <input type="text" id="settingsStatusBadge" class="form-input" placeholder="Jam Operasional: Minggu – Senin (08.00 – 17.00) • Selasa – Sabtu (08.00 – 21.00)" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsAnnouncementTitle">Judul Pengumuman Operasional</label>
+              <input type="text" id="settingsAnnouncementTitle" class="form-input" placeholder="Update SOP & Daily Task Drive WM Center (Per 18 Agustus 2026)" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settingsAnnouncementDesc">Isi Pengumuman Operasional</label>
+              <textarea id="settingsAnnouncementDesc" class="form-textarea" placeholder="Seluruh SOP, Product Knowledge, dan Rekap Spreadsheet..."></textarea>
+            </div>
+
+            <div class="modal-footer-actions">
+              <button type="button" id="btnCancelSettings" class="btn-reset-sops">Batal</button>
+              <button type="button" id="btnSaveSettingsForm" class="btn-add-sop">💾 Simpan Pengaturan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Modal: Kelola Kategori / Peran Tim (Edit, Hapus, Tambah) -->
+    <div class="modal-overlay" id="roleManagerModalOverlay">
+      <div class="modal-box" style="max-width: 600px;">
+        <div class="modal-header">
+          <h3 style="font-size: 1.15rem; color: #0F172A;">👥 Kelola Kategori / Peran Tim</h3>
+          <button class="modal-close" id="roleManagerModalClose">✕</button>
+        </div>
+        <div class="modal-body">
+          <p style="color: #64748B; font-size: 0.85rem; margin-bottom: 1.25rem;">
+            Ubah nama kategori yang ada, hapus peran yang tidak diperlukan, atau tambahkan divisi tim baru untuk klinik Anda.
+          </p>
+
+          <!-- List of Existing Roles -->
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.65rem; color: #1E293B;">Daftar Kategori Tim Aktif:</h4>
+          <div id="roleManagerListContainer" style="margin-bottom: 1.5rem;">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- Add New Role Form -->
+          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px; padding: 1.25rem;">
+            <h4 style="font-size: 0.95rem; color: #166534; margin-bottom: 0.5rem;">➕ Tambah Kategori / Peran Tim Baru</h4>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <input type="text" id="newRoleNameInput" class="form-input" style="flex: 1; min-width: 220px;" placeholder="Misal: Apoteker & Farmasi / Kasir / Perawat" />
+              <button type="button" id="btnAddNewRole" class="btn-add-sop" style="background: #16A34A; white-space: nowrap;">
+                ➕ Tambahkan
+              </button>
+            </div>
+          </div>
+
+          <div class="modal-footer-actions" style="margin-top: 1.25rem;">
+            <button type="button" id="btnCloseRoleManager" class="btn-add-sop">Selesai & Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Modal Settings: Kelola / Tambah / Edit Modul Utama -->
+    <div class="modal-overlay" id="moduleManagerModalOverlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 style="font-size: 1.15rem; color: #0F172A;">⚙️ Kelola Modul Utama & Tab Navigasi</h3>
+          <button class="modal-close" id="moduleManagerModalClose">✕</button>
+        </div>
+        <div class="modal-body">
+          <p style="color: #64748B; font-size: 0.85rem; margin-bottom: 1.25rem;">
+            Atur nama modul, ikon emoji, tambahkan modul baru (misal: Khusus Front Office / Modul Training), atau hapus modul yang tidak dipakai.
+          </p>
+
+          <!-- List of Existing Modules -->
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.65rem; color: #1E293B;">Daftar Modul Aktif:</h4>
+          <div id="moduleManagerListContainer" style="margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- Add New Module Form -->
+          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px; padding: 1.25rem;">
+            <h4 style="font-size: 0.95rem; color: #166534; margin-bottom: 0.5rem;">➕ Tambah Modul Baru</h4>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+              <input type="text" id="newModuleIconInput" class="form-input" style="width: 70px; text-align: center; font-size: 1.2rem;" placeholder="📑" value="📑" />
+              <input type="text" id="newModuleNameInput" class="form-input" style="flex: 1; min-width: 200px;" placeholder="Misal: SOP Khusus Front Office / Modul Training FO" />
+              <button type="button" id="btnAddNewModule" class="btn-add-sop" style="background: #16A34A; white-space: nowrap;">
+                ➕ Tambah Modul
+              </button>
+            </div>
+            <!-- Quick Emoji Pickers -->
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center;">
+              <span style="font-size: 0.75rem; color: #166534; font-weight: 600;">Pilihan Emoji Cepat:</span>
+              <button type="button" class="btn-quick-emoji" data-emoji="📄">📄</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="📅">📅</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="⚡">⚡</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="📑">📑</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="📁">📁</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="🩺">🩺</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="💬">💬</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="🏢">🏢</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="🎓">🎓</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="📋">📋</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="📌">📌</button>
+              <button type="button" class="btn-quick-emoji" data-emoji="💡">💡</button>
+            </div>
+          </div>
+
+          <div class="modal-footer-actions" style="margin-top: 1.25rem;">
+            <button type="button" id="btnCloseModuleManager" class="btn-add-sop">Selesai & Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><strong id="footerBrandText">WM Center Operational Portal</strong> &copy; 2026 WM Center. Hak Cipta Dilindungi Undang-Undang.</p>
+      <p style="margin-top: 0.25rem; font-size: 0.775rem; color: #94A3B8;">Mode Studio Editor Active | Klik tombol 'PUBLIKASIKAN KE STAF' di atas untuk menerapkan perubahan.</p>
+    </footer>
+
+  </div>
+
+  <script src="editor.js?v=v14"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap');
 
 :root {
-  --primary: #0D9488; /* WM Center Medical Teal */
+  --primary: #0D9488;
   --primary-hover: #0F766E;
   --primary-light: #CCFBF1;
   --secondary: #0F172A;
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--secondary);
 }
 
-/* Studio Editor Top Header Bar (Google Sites Style) */
+/* Studio Editor Top Header Bar */
 .editor-top-bar {
   background-color: #1E293B;
   color: #FFFFFF;
@@ -371,7 +371,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--primary-hover);
 }
 
-/* Primary Navigation Module Tabs (SOP, Daily Tasks, Quick Links) */
+/* Primary Navigation Module Tabs */
 .module-tabs {
   display: flex;
   gap: 0.75rem;
@@ -414,7 +414,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--secondary);
 }
 
-/* Edit Pencil on Module Tabs (Studio Editor) */
+/* Edit Pencil on Module Tabs */
 .btn-edit-moduletab {
   position: relative !important;
   top: auto !important;
@@ -424,7 +424,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
-/* Category Filter Tabs inside SOP Module */
+/* Category Filter Tabs */
 .sop-section {
   margin-bottom: 3rem;
 }
@@ -435,122 +435,8 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 2px solid var(--border-color);
   margin-bottom: 1.5rem;
   overflow-x: auto;
-  padding-bottom: 4px;
-  align-items: center;
+  padding-bottom: 2px;
 }
-
-.category-tab-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.btn-cat-action {
-  background: #F1F5F9;
-  border: 1px solid #CBD5E1;
-  border-radius: 4px;
-  font-size: 0.65rem;
-  padding: 2px 4px;
-  cursor: pointer;
-  color: #475569;
-  transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-cat-action:hover {
-  background: #E2E8F0;
-  transform: scale(1.1);
-}
-
-.btn-cat-delete:hover {
-  background: #FEE2E2;
-  color: #DC2626;
-  border-color: #FCA5A5;
-}
-
-.btn-add-cat-tab {
-  background: #F0FDF4;
-  color: #166534;
-  border: 1px dashed #86EFAC;
-  padding: 0.45rem 0.85rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: var(--transition);
-  margin-left: 0.5rem;
-}
-
-.btn-add-cat-tab:hover {
-  background: #DCFCE7;
-  border-color: #22C55E;
-}
-
-/* Role Manager Modal Styles */
-.role-list-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: #F8FAFC;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-  margin-bottom: 0.65rem;
-}
-
-.role-list-item input {
-  flex: 1;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #CBD5E1;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.btn-role-action {
-  padding: 0.45rem 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  transition: var(--transition);
-}
-
-.btn-role-save {
-  background: #0D9488;
-  color: white;
-}
-
-.btn-role-save:hover {
-  background: #0F766E;
-}
-
-.btn-role-delete {
-  background: #FEE2E2;
-  color: #DC2626;
-  border: 1px solid #FCA5A5;
-}
-
-.btn-role-delete:hover {
-  background: #EF4444;
-  color: white;
-}
-
-.badge-emerald { background: #D1FAE5; color: #065F46; }
-.badge-rose { background: #FFE4E6; color: #9F1239; }
-.badge-cyan { background: #CFFAFE; color: #155E75; }
-.badge-indigo { background: #E0E7FF; color: #3730A3; }
-.badge-amber { background: #FEF3C7; color: #92400E; }
-.badge-orange { background: #FFEDD5; color: #9A3412; }
-
 
 .tab-btn {
   padding: 0.75rem 1.25rem;
@@ -626,7 +512,7 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1;
 }
 
-/* Multi-category Checkbox Chips in Form Modal */
+/* Multi-category Checkbox Chips */
 .form-categories-checkbox-grid {
   display: flex;
   flex-wrap: wrap;
@@ -685,6 +571,12 @@ h1, h2, h3, h4, h5, h6 {
 .badge-physio { background: #CCFBF1; color: #0F766E; }
 .badge-doctor { background: #F3E8FF; color: #6B21A8; }
 .badge-management { background: #FEF3C7; color: #B45309; }
+.badge-emerald { background: #D1FAE5; color: #065F46; }
+.badge-rose { background: #FFE4E6; color: #9F1239; }
+.badge-cyan { background: #CFFAFE; color: #155E75; }
+.badge-indigo { background: #E0E7FF; color: #3730A3; }
+.badge-amber { background: #FEF3C7; color: #92400E; }
+.badge-orange { background: #FFEDD5; color: #9A3412; }
 
 .card-type-tag {
   font-size: 0.75rem;
@@ -734,7 +626,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #FFFFFF;
 }
 
-/* Inline Edit Pencil Buttons (Studio Editor) */
+/* Inline Edit Pencil Buttons */
 .btn-inline-edit {
   position: absolute;
   top: 8px;
@@ -785,7 +677,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.1);
 }
 
-/* SOP Controls Bar (Studio Editor) */
+/* SOP Controls Bar */
 .admin-bar-controls {
   display: flex;
   align-items: center;
@@ -1172,3 +1064,127 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #D97706;
 }
 
+/* Announcement Card */
+.announcement-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.announcement-left {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.announcement-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.announcement-text h4 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.announcement-text p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Role Manager List Items */
+.role-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.role-list-item input[type="text"] {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  outline: none;
+}
+
+.role-list-item input[type="text"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.1);
+}
+
+.btn-role-action {
+  padding: 0.35rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-role-save {
+  background: #0D9488;
+  color: white;
+}
+
+.btn-role-delete {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+/* Save & Cancel Buttons */
+.btn-save {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-save:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-cancel {
+  background-color: #F1F5F9;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-cancel:hover {
+  background-color: #E2E8F0;
+  color: var(--secondary);
+}
+
+.btn-admin-edit {
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.825rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #FDE68A;
+  transition: var(--transition);
+}
+
+.btn-admin-edit:hover {
+  background: #FDE68A;
+}

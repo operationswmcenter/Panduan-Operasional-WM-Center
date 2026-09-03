@@ -1,4 +1,4 @@
-// WM Center Clinic & Physio Ops Published Public App Script (Tampilan Utama Staf)
+﻿// WM Center Clinic & Physio Ops Published Public App Script (Tampilan Utama Staf)
 document.addEventListener('DOMContentLoaded', () => {
 
   const defaultRoles = [
@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'physio', name: 'Fisioterapi & Terapis' },
     { id: 'doctor', name: 'Dokter Medis' },
     { id: 'management', name: 'Manajemen & Ops' }
+  ];
+
+  const defaultModules = [
+    { id: 'sop', icon: 'ðŸ“„', name: 'General Ops & SOP' },
+    { id: 'dailytask', icon: 'ðŸ“…', name: 'Modul Training' },
+    { id: 'quicklink', icon: 'âš¡', name: 'IOC' }
   ];
 
   const defaultSettings = {
@@ -16,19 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
     logoUrl: 'assets/logo.jpg',
     heroTitle: 'Pusat Panduan SOP, Product Knowledge & Daily Tasks WM Center',
     heroDesc: 'Akses cepat seluruh instruksi kerja (SOP), materi product knowledge, rekap spreadsheet daily income, serta jadwal shift per cabang WM Center.',
-    statusBadge: 'Jam Operasional: Minggu – Senin (08.00 – 17.00) • Selasa – Sabtu (08.00 – 21.00)',
+    statusBadge: 'Jam Operasional: Minggu â€“ Senin (08.00 â€“ 17.00) â€¢ Selasa â€“ Sabtu (08.00 â€“ 21.00)',
     announcementTitle: 'Update SOP & Daily Task Drive WM Center (Per 18 Agustus 2026)',
     announcementDesc: 'Seluruh SOP, Product Knowledge, dan Rekap Spreadsheet Daily Income Cabang telah terhubung langsung dengan Google Drive internal WM Center.',
-    moduleTab1: 'SOP & Product Knowledge',
-    moduleTab2: 'Daily Tasks & Spreadsheet Cabang',
-    moduleTab3: 'Akses Cepat System & Drive Tools',
-    roles: defaultRoles
+    moduleTab1: 'General Ops & SOP',
+    moduleTab2: 'Modul Training',
+    moduleTab3: 'IOC',
+    roles: defaultRoles,
+    modules: defaultModules
   };
 
   const defaultItems = [
     // --- MODULE: SOP & PRODUCT KNOWLEDGE ---
     {
       id: 'sop_fo_01',
+      modules: ['sop'],
       module: 'sop',
       categories: ['fo'],
       category: 'fo',
@@ -41,8 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'sop_fo_02',
       code: 'SOP-FO-PK',
+      modules: ['sop'],
       module: 'sop',
-      categories: ['fo', 'physio'],
+      categories: ['fo'],
       category: 'fo',
       title: 'Product Knowledge: Paket Terapi & Price List WM Center',
       summary: 'Katalog lengkap harga tindakan Fisioterapi, Dry Needling, Manual Therapy, serta paket bundel sesi terapi.',
@@ -51,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'sop_phy_01',
+      modules: ['sop'],
       module: 'sop',
       categories: ['physio'],
       category: 'physio',
@@ -62,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'sop_phy_02',
+      modules: ['sop'],
       module: 'sop',
       categories: ['physio'],
       category: 'physio',
@@ -73,8 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'sop_doc_01',
+      modules: ['sop'],
       module: 'sop',
-      categories: ['doctor', 'physio'],
+      categories: ['doctor'],
       category: 'doctor',
       code: 'SOP-DOC-01',
       title: 'Standar Asesmen Spesialis & Evaluasi Radiologi X-Ray/MRI',
@@ -84,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'sop_mgmt_01',
+      modules: ['sop'],
       module: 'sop',
       categories: ['management'],
       category: 'management',
@@ -97,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- MODULE: DAILY TASKS & SPREADSHEETS CABANG ---
     {
       id: 'dt_fo_01',
+      modules: ['dailytask'],
       module: 'dailytask',
       categories: ['fo'],
       category: 'fo',
@@ -108,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'dt_fo_02',
+      modules: ['dailytask'],
       module: 'dailytask',
       categories: ['fo'],
       category: 'fo',
@@ -119,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'dt_phy_01',
+      modules: ['dailytask'],
       module: 'dailytask',
       categories: ['physio'],
       category: 'physio',
@@ -130,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'dt_phy_02',
+      modules: ['dailytask'],
       module: 'dailytask',
       categories: ['physio'],
       category: 'physio',
@@ -141,8 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'dt_mgmt_01',
+      modules: ['dailytask'],
       module: 'dailytask',
-      categories: ['management', 'fo'],
+      categories: ['management'],
       category: 'management',
       code: 'SHEET-INCOME',
       title: 'Spreadsheet Daily Income & Closing Kasir Harian Cabang',
@@ -154,8 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- MODULE: AKSES CEPAT SYSTEM & DRIVE TOOLS ---
     {
       id: 'ql_01',
+      modules: ['quicklink'],
       module: 'quicklink',
-      categories: ['fo', 'physio', 'doctor', 'management'],
+      categories: ['fo'],
       category: 'fo',
       code: 'SYSTEM-EMR',
       title: 'Sistem EMR & Rekam Medis Pasien WM Center',
@@ -165,8 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'ql_02',
+      modules: ['quicklink'],
       module: 'quicklink',
-      categories: ['management', 'physio'],
+      categories: ['management'],
       category: 'management',
       code: 'DRIVE-STOK',
       title: 'Spreadsheet Inventaris & Order Stok Bahan Medis',
@@ -176,8 +196,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'ql_03',
+      modules: ['quicklink'],
       module: 'quicklink',
-      categories: ['management', 'fo'],
+      categories: ['management'],
       category: 'management',
       code: 'DRIVE-COMPLAINT',
       title: 'Spreadsheet Logbook Escalation & Komplain Pasien',
@@ -208,35 +229,30 @@ document.addEventListener('DOMContentLoaded', () => {
     return loadState('wmcenter_published_items_v5', loadState('wmcenter_draft_items_v5', defaultItems));
   }
 
-  // Load State
-  let appSettings = getActiveSettings();
-  let itemList = getActiveItems();
-
-  let currentModule = 'sop'; // 'sop', 'dailytask', 'quicklink'
-  let currentRole = 'all'; // 'all', or roleId
-  let currentSubCategory = 'all';
-  let searchQuery = '';
-
-  // Helper function to safely get categories array for an item
-  function getItemCategories(item) {
-    if (Array.isArray(item.categories) && item.categories.length > 0) {
-      return item.categories;
-    }
-    if (item.category) {
-      return Array.isArray(item.category) ? item.category : [item.category];
-    }
-    return [appSettings.roles[0]?.id || 'fo'];
-  }
-
+  // Helper to extract modules assigned to an item
   function getItemModules(item) {
     if (Array.isArray(item.modules) && item.modules.length > 0) {
       return item.modules;
     }
-    if (item.module) {
-      return Array.isArray(item.module) ? item.module : [item.module];
-    }
-    return ['sop'];
+    return [item.module || 'sop'];
   }
+
+  // Helper to extract categories assigned to an item
+  function getItemCategories(item) {
+    if (Array.isArray(item.categories) && item.categories.length > 0) {
+      return item.categories;
+    }
+    return [item.category || 'fo'];
+  }
+
+  // Load State
+  let appSettings = getActiveSettings();
+  let itemList = getActiveItems();
+
+  let currentModule = 'sop';
+  let currentRole = 'all';
+  let currentSubCategory = 'all';
+  let searchQuery = '';
 
   // Badge Color Map
   const roleBadgeColors = ['badge-fo', 'badge-physio', 'badge-doctor', 'badge-management', 'badge-emerald', 'badge-rose', 'badge-cyan', 'badge-indigo', 'badge-amber', 'badge-orange'];
@@ -273,8 +289,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const contentGrid = document.getElementById('contentGrid');
   const searchInput = document.getElementById('searchInput');
 
-  const moduleTabBtns = document.querySelectorAll('.module-tab-btn');
-
   const sopModalOverlay = document.getElementById('sopModalOverlay');
   const modalTitle = document.getElementById('modalTitle');
   const modalBody = document.getElementById('modalBody');
@@ -285,9 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return appSettings.modules;
     }
     return [
-      { id: 'sop', icon: '📄', name: appSettings.moduleTab1 || 'General Ops & SOP' },
-      { id: 'dailytask', icon: '📅', name: appSettings.moduleTab2 || 'Modul Training' },
-      { id: 'quicklink', icon: '⚡', name: appSettings.moduleTab3 || 'IOC' }
+      { id: 'sop', icon: 'ðŸ“„', name: appSettings.moduleTab1 || 'General Ops & SOP' },
+      { id: 'dailytask', icon: 'ðŸ“…', name: appSettings.moduleTab2 || 'Modul Training' },
+      { id: 'quicklink', icon: 'âš¡', name: appSettings.moduleTab3 || 'IOC' }
     ];
   }
 
@@ -301,8 +315,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     container.innerHTML = modules.map(m => `
-      <button class="module-tab-btn ${currentModule === m.id ? 'active' : ''}" data-module="${m.id}">
-        <span>${m.icon || '📄'}</span> <span>${m.name}</span>
+      <button class=\"module-tab-btn ${currentModule === m.id ? 'active' : ''}\" data-module=\"${m.id}\">
+        <span>${m.icon || 'ðŸ“„'}</span> <span>${m.name}</span>
       </button>
     `).join('');
 
@@ -333,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (announcementTitleText) announcementTitleText.textContent = appSettings.announcementTitle;
     if (announcementDescText) announcementDescText.textContent = appSettings.announcementDesc;
 
-    if (branchSelect) branchSelect.innerHTML = appSettings.branches.map(b => `<option value="${b}">${b}</option>`).join('');
+    if (branchSelect) branchSelect.innerHTML = appSettings.branches.map(b => `<option value=\"${b}\">${b}</option>`).join('');
 
     renderModuleTabs();
     renderRolePills();
@@ -343,9 +357,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render Top Navbar Role Pills
   function renderRolePills() {
     if (!rolePillsContainer) return;
-    let html = `<button class="role-pill ${currentRole === 'all' ? 'active' : ''}" data-role="all">Semua Tim</button>`;
+    let html = `<button class=\"role-pill ${currentRole === 'all' ? 'active' : ''}\" data-role=\"all\">Semua Tim</button>`;
     appSettings.roles.forEach(r => {
-      html += `<button class="role-pill ${currentRole === r.id ? 'active' : ''}" data-role="${r.id}">${r.name}</button>`;
+      html += `<button class=\"role-pill ${currentRole === r.id ? 'active' : ''}\" data-role=\"${r.id}\">${r.name}</button>`;
     });
     rolePillsContainer.innerHTML = html;
 
@@ -355,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderRolePills();
         renderCategoryTabs();
         renderContent();
-        showToast(`🎯 Filter Peran: ${pill.textContent}`);
+        showToast(`ðŸŽ¯ Filter Peran: ${pill.textContent}`);
       });
     });
   }
@@ -364,15 +378,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderCategoryTabs() {
     if (!categoryTabsContainer) return;
 
-    const currentModuleItems = itemList.filter(i => i.module === currentModule);
+    const currentModuleItems = itemList.filter(i => getItemModules(i).includes(currentModule));
     const activeRoleItems = currentModuleItems.filter(i => currentRole === 'all' || getItemCategories(i).includes(currentRole));
     const totalCount = activeRoleItems.length;
 
-    let html = `<button class="tab-btn ${currentSubCategory === 'all' ? 'active' : ''}" data-category="all">Semua Dokumen (${totalCount})</button>`;
+    let html = `<button class=\"tab-btn ${currentSubCategory === 'all' ? 'active' : ''}\" data-category=\"all\">Semua Dokumen (${totalCount})</button>`;
 
     appSettings.roles.forEach(r => {
       const roleCount = activeRoleItems.filter(i => getItemCategories(i).includes(r.id)).length;
-      html += `<button class="tab-btn ${currentSubCategory === r.id ? 'active' : ''}" data-category="${r.id}">${r.name} (${roleCount})</button>`;
+      html += `<button class=\"tab-btn ${currentSubCategory === r.id ? 'active' : ''}\" data-category=\"${r.id}\">${r.name} (${roleCount})</button>`;
     });
 
     categoryTabsContainer.innerHTML = html;
@@ -404,27 +418,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const badgesHtml = cats.map(catId => {
         const badgeClass = getRoleBadgeClass(catId);
         const badgeText = getRoleName(catId);
-        return `<span class="card-badge ${badgeClass}">${badgeText}</span>`;
+        return `<span class=\"card-badge ${badgeClass}\">${badgeText}</span>`;
       }).join('');
 
       const hasDriveUrl = item.driveUrl && item.driveUrl.length > 5;
 
       return `
-        <div class="latest-info-card">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 0.5rem;">
-            <span class="card-code" style="background: #FEF3C7; color: #D97706; border-color: #FCD34D;">🔥 ${item.code}</span>
-            <div class="card-badges-wrapper">${badgesHtml}</div>
+        <div class=\"latest-info-card\">
+          <div style=\"display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 0.5rem;\">
+            <span class=\"card-code\" style=\"background: #FEF3C7; color: #D97706; border-color: #FCD34D;\">ðŸ”¥ ${item.code}</span>
+            <div class=\"card-badges-wrapper\">${badgesHtml}</div>
           </div>
-          <h3 class="card-title" style="font-size: 1.025rem; margin-bottom: 0.4rem; font-weight:700;">${item.title}</h3>
-          <p class="card-summary" style="font-size: 0.85rem; color: #475569; margin-bottom: 0.85rem;">${item.summary}</p>
-          <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.5rem; border-top: 1px dashed #FDE68A;">
+          <h3 class=\"card-title\" style=\"font-size: 1.025rem; margin-bottom: 0.4rem; font-weight:700;\">${item.title}</h3>
+          <p class=\"card-summary\" style=\"font-size: 0.85rem; color: #475569; margin-bottom: 0.85rem;\">${item.summary}</p>
+          <div style=\"display: flex; gap: 0.5rem; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.5rem; border-top: 1px dashed #FDE68A;\">
             ${hasDriveUrl ? `
-              <a href="${item.driveUrl}" target="_blank" class="card-link" style="font-size: 0.825rem; font-weight: 700; color: #D97706; text-decoration:none;">
-                🔗 Buka Link ➔
+              <a href=\"${item.driveUrl}\" target=\"_blank\" class=\"card-link\" style=\"font-size: 0.825rem; font-weight: 700; color: #D97706; text-decoration:none;\">
+                ðŸ”— Buka Link âž”
               </a>
             ` : `
-              <button class="card-link btn-read-sop" data-id="${item.id}" style="font-size: 0.825rem; font-weight: 700; color: #D97706; background: none; border: none; cursor: pointer; padding:0;">
-                📖 Detail ➔
+              <button class=\"card-link btn-read-sop\" data-id=\"${item.id}\" style=\"font-size: 0.825rem; font-weight: 700; color: #D97706; background: none; border: none; cursor: pointer; padding:0;\">
+                ðŸ“– Detail âž”
               </button>
             `}
           </div>
@@ -440,6 +454,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function openSopModal(id) {
+    const item = itemList.find(i => i.id === id);
+    if (!item) return;
+    modalTitle.textContent = `[${item.code}] ${item.title}`;
+    modalBody.innerHTML = item.details || `<p>${item.summary}</p>`;
+    sopModalOverlay.classList.add('active');
+  }
+
   // Render Grid Content Cards
   function renderContent() {
     renderCategoryTabs();
@@ -448,11 +470,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Module Title Text
     if (sectionTitleHeading) {
       if (currentModule === 'sop') {
-        sectionTitleHeading.textContent = `📄 Daftar ${appSettings.moduleTab1 || 'SOP & Product Knowledge'} ${appSettings.brandTitle}`;
+        sectionTitleHeading.textContent = `ðŸ“„ Daftar ${appSettings.moduleTab1 || 'SOP & Product Knowledge'} ${appSettings.brandTitle}`;
       } else if (currentModule === 'dailytask') {
-        sectionTitleHeading.textContent = `📅 Link ${appSettings.moduleTab2 || 'Spreadsheet Daily Tasks & Jadwal Cabang'}`;
+        sectionTitleHeading.textContent = `ðŸ“… Link ${appSettings.moduleTab2 || 'Spreadsheet Daily Tasks & Jadwal Cabang'}`;
       } else {
-        sectionTitleHeading.textContent = `⚡ ${appSettings.moduleTab3 || 'Akses Cepat System & Drive Tools'}`;
+        sectionTitleHeading.textContent = `âš¡ ${appSettings.moduleTab3 || 'Akses Cepat System & Drive Tools'}`;
       }
     }
 
@@ -472,10 +494,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filtered.length === 0) {
       contentGrid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 3rem; background: white; border-radius: 16px; border: 1px solid #E2E8F0;">
-          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
-          <h3 style="margin-bottom: 0.5rem;">Tidak Ada Dokumen / Link Ditemukan</h3>
-          <p style="color: #64748B; font-size: 0.9rem;">Coba ganti filter peran staf atau ubah kata kunci pencarian.</p>
+        <div style=\"grid-column: 1/-1; text-align: center; padding: 3rem; background: white; border-radius: 16px; border: 1px solid #E2E8F0;\">
+          <div style=\"font-size: 2.5rem; margin-bottom: 0.5rem;\">ðŸ”</div>
+          <h3 style=\"margin-bottom: 0.5rem;\">Tidak Ada Dokumen / Link Ditemukan</h3>
+          <p style=\"color: #64748B; font-size: 0.9rem;\">Coba ganti filter peran staf atau ubah kata kunci pencarian.</p>
         </div>
       `;
       return;
@@ -486,26 +508,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const badgesHtml = cats.map(catId => {
         const badgeClass = getRoleBadgeClass(catId);
         const badgeText = getRoleName(catId);
-        return `<span class="card-badge ${badgeClass}">${badgeText}</span>`;
+        return `<span class=\"card-badge ${badgeClass}\">${badgeText}</span>`;
       }).join('');
 
       const hasDriveUrl = item.driveUrl && item.driveUrl.length > 5;
-      const driveBtnText = hasDriveUrl ? '🔗 Buka di Google Drive / Spreadsheet ➔' : '📖 Baca Detail SOP ➔';
+      const driveBtnText = hasDriveUrl ? 'ðŸ”— Buka di Google Drive / Spreadsheet âž”' : 'ðŸ“– Baca Detail SOP âž”';
 
       return `
-        <div class="item-card">
+        <div class=\"item-card\">
           <div>
-            <div class="card-top">
-              <div class="card-badges-wrapper">
+            <div class=\"card-top\">
+              <div class=\"card-badges-wrapper\">
                 ${badgesHtml}
               </div>
-              <span class="card-type-tag">${item.code || 'DOC'}</span>
+              <span class=\"card-type-tag\">${item.code || 'DOC'}</span>
             </div>
-            <h3 class="card-title">${item.title}</h3>
-            <p class="card-summary">${item.summary}</p>
+            <h3 class=\"card-title\">${item.title}</h3>
+            <p class=\"card-summary\">${item.summary}</p>
           </div>
           <div>
-            <button class="btn-open-link btn-open-item" data-id="${item.id}">
+            <button class=\"btn-open-link btn-open-item\" data-id=\"${item.id}\">
               ${driveBtnText}
             </button>
           </div>
@@ -521,19 +543,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (item.driveUrl && item.driveUrl.length > 5) {
           window.open(item.driveUrl, '_blank');
-          showToast(`📊 Membuka Google Drive / Spreadsheet: ${item.title}`);
+          showToast(`ðŸ“Š Membuka Google Drive / Spreadsheet: ${item.title}`);
         } else {
-          modalTitle.textContent = `[${item.code}] ${item.title}`;
-          modalBody.innerHTML = item.details || `<p>${item.summary}</p>`;
-          sopModalOverlay.classList.add('active');
+          openSopModal(id);
         }
       });
     });
   }
 
   if (modalClose) modalClose.addEventListener('click', () => sopModalOverlay.classList.remove('active'));
-
-
 
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -544,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (branchSelect) {
     branchSelect.addEventListener('change', (e) => {
-      showToast(`📍 Menampilkan panduan untuk cabang: ${e.target.value}`);
+      showToast(`ðŸ“ Menampilkan panduan untuk cabang: ${e.target.value}`);
     });
   }
 
@@ -578,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Real-time synchronization listeners
   window.addEventListener('storage', () => {
     syncAndRefresh();
-    showToast('🔄 Tampilan otomatis diperbarui!');
+    showToast('ðŸ”„ Tampilan otomatis diperbarui!');
   });
 
   window.addEventListener('focus', () => {

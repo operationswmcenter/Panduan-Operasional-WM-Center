@@ -1,4 +1,4 @@
-// WM Center Studio Editor Script (Internal Admin Edit Mode)
+﻿// WM Center Studio Editor Script (Internal Admin Edit Mode)
 document.addEventListener('DOMContentLoaded', () => {
 
   const defaultRoles = [
@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   const defaultModules = [
-    { id: 'sop', icon: '\uD83D\uDCC4', name: 'General Ops & SOP' },
-    { id: 'dailytask', icon: '\uD83D\uDCC5', name: 'Modul Training' },
-    { id: 'quicklink', icon: '\u26A1', name: 'IOC' }
+    { id: 'sop', icon: 'ðŸ“„', name: 'General Ops & SOP' },
+    { id: 'dailytask', icon: 'ðŸ“…', name: 'Modul Training' },
+    { id: 'quicklink', icon: 'âš¡', name: 'IOC' }
   ];
 
   const defaultSettings = {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     logoUrl: 'assets/logo.jpg',
     heroTitle: 'Pusat Panduan SOP, Product Knowledge & Daily Tasks WM Center',
     heroDesc: 'Akses cepat seluruh instruksi kerja (SOP), materi product knowledge, rekap spreadsheet daily income, serta jadwal shift per cabang WM Center.',
-    statusBadge: 'Jam Operasional: Minggu - Senin (08.00 - 17.00) \u2022 Selasa - Sabtu (08.00 - 21.00)',
+    statusBadge: 'Jam Operasional: Minggu â€“ Senin (08.00 â€“ 17.00) â€¢ Selasa â€“ Sabtu (08.00 â€“ 21.00)',
     announcementTitle: 'Update SOP & Daily Task Drive WM Center (Per 18 Agustus 2026)',
     announcementDesc: 'Seluruh SOP, Product Knowledge, dan Rekap Spreadsheet Daily Income Cabang telah terhubung langsung dengan Google Drive internal WM Center.',
     moduleTab1: 'General Ops & SOP',
@@ -393,15 +393,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let html = modules.map((m, idx) => `
-      <button class="module-tab-btn ${currentModule === m.id ? 'active' : ''}" data-module="${m.id}" data-index="${idx}" draggable="true" title="Tahan &amp; Geser (Drag) untuk mengubah urutan modul" style="position: relative;">
-        <span>${m.icon || '\uD83D\uDCC4'}</span> <span>${m.name}</span>
-        <span class="btn-inline-edit btn-edit-moduletab" data-id="${m.id}" title="Edit Modul ${m.name}" style="top: 4px; right: 6px; width: 26px; height: 26px; font-size: 0.7rem;">\u270F\uFE0F</span>
+      <button class=\"module-tab-btn ${currentModule === m.id ? 'active' : ''}\" data-module=\"${m.id}\" data-index=\"${idx}\" draggable=\"true\" title=\"Tahan &amp; Geser (Drag) untuk mengubah urutan modul\" style=\"position: relative;\">
+        <span>${m.icon || 'ðŸ“„'}</span> <span>${m.name}</span>
+        <span class=\"btn-inline-edit btn-edit-moduletab\" data-id=\"${m.id}\" title=\"Edit Modul ${m.name}\" style=\"top: 4px; right: 6px; width: 26px; height: 26px; font-size: 0.7rem;\">âœï¸</span>
       </button>
     `).join('');
 
     html += `
-      <button id="btnAddModuleTab" class="btn-add-module-tab" title="Tambah Modul Baru">
-        <span>\u2795</span> <span>Tambah Modul</span>
+      <button id=\"btnAddModuleTab\" class=\"btn-add-module-tab\" title=\"Tambah Modul Baru\">
+        <span>âž•</span> <span>Tambah Modul</span>
       </button>
     `;
 
@@ -934,24 +934,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<span class=\"card-badge ${badgeClass}\">${badgeText}</span>`;
       }).join('');
 
-      const hasDriveUrl = item.driveUrl && item.driveUrl            <span class="card-code" style="background: #FEF3C7; color: #D97706; border-color: #FCD34D;">\uD83D\uDD25 ${item.code}</span>
-            <div class="card-badges-wrapper">${badgesHtml}</div>
+      const hasDriveUrl = item.driveUrl && item.driveUrl.length > 5;
+
+      return `
+        <div class=\"latest-info-card\">
+          <div style=\"display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 0.5rem;\">
+            <span class=\"card-code\" style=\"background: #FEF3C7; color: #D97706; border-color: #FCD34D;\">ðŸ”¥ ${item.code}</span>
+            <div class=\"card-badges-wrapper\">${badgesHtml}</div>
           </div>
-          <h3 class="card-title" style="font-size: 1.025rem; margin-bottom: 0.4rem; font-weight:700;">${item.title}</h3>
-          <p class="card-summary" style="font-size: 0.85rem; color: #475569; margin-bottom: 0.85rem;">${item.summary}</p>
-          <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.5rem; border-top: 1px dashed #FDE68A;">
+          <h3 class=\"card-title\" style=\"font-size: 1.025rem; margin-bottom: 0.4rem; font-weight:700;\">${item.title}</h3>
+          <p class=\"card-summary\" style=\"font-size: 0.85rem; color: #475569; margin-bottom: 0.85rem;\">${item.summary}</p>
+          <div style=\"display: flex; gap: 0.5rem; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.5rem; border-top: 1px dashed #FDE68A;\">
             ${hasDriveUrl ? `
-              <a href="${item.driveUrl}" target="_blank" class="card-link" style="font-size: 0.825rem; font-weight: 700; color: #D97706; text-decoration:none;">
-                \uD83D\uDD17 Buka Link \u2794
+              <a href=\"${item.driveUrl}\" target=\"_blank\" class=\"card-link\" style=\"font-size: 0.825rem; font-weight: 700; color: #D97706; text-decoration:none;\">
+                ðŸ”— Buka Link âž”
               </a>
             ` : `
-              <button class="card-link btn-read-sop" data-id="${item.id}" style="font-size: 0.825rem; font-weight: 700; color: #D97706; background: none; border: none; cursor: pointer; padding:0;">
-                \uD83D\uDCD6 Detail \u2794
+              <button class=\"card-link btn-read-sop\" data-id=\"${item.id}\" style=\"font-size: 0.825rem; font-weight: 700; color: #D97706; background: none; border: none; cursor: pointer; padding:0;\">
+                ðŸ“– Detail âž”
               </button>
             `}
-            <button class="btn-unpin-featured" data-id="${item.id}" style="background: #FEE2E2; color: #DC2626; border: none; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer;" title="Keluarkan dari Info Terbaru">
-              \u2715 Unpin
-            </button>und: #FEE2E2; color: #DC2626; border: none; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer;\" title=\"Keluarkan dari Info Terbaru\">
+            <button class=\"btn-unpin-featured\" data-id=\"${item.id}\" style=\"background: #FEE2E2; color: #DC2626; border: none; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer;\" title=\"Keluarkan dari Info Terbaru\">
               âŒ Unpin
             </button>
           </div>
